@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var Benleneve\Offer\Block\Offer $block */
+?>
+
+<?php if($block->hasActiveOffer()): ?>
+    <div class="benleneve-offer-container">
+        <?php foreach ($block->getActiveOffers() as $offer) : ?>
+            <div class="benleneve-offer-offer">
+                <img src="<?= $block->escapeHtml($block->getMediaPath() . $offer->getFeaturedImage()) ?>"
+                     alt="<?=$block->escapeHtml($offer->getFeaturedImage()) ?>">
+                <p><?= $block->escapeHtml($offer->getContent()) ?></p>
+                <a href="<?= $block->escapeHtml(($offer->getRedirectUrl())) ?>" target="_blank">
+                    <button>
+                        <?= $block->escapeHtml(__('See more')) ?>
+                    </button>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

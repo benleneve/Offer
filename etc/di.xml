@@ -1,0 +1,42 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="benleneve_offer_listing_data_source" xsi:type="string">Benleneve\Offer\Model\ResourceModel\Offer\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Benleneve\Offer\Model\ResourceModel\Offer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">benleneve_offer</argument>
+            <argument name="resourceModel" xsi:type="string">Benleneve\Offer\Model\ResourceModel\Offer</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Benleneve\Offer\ReferenceImageUpload" type="Benleneve\Offer\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">benleneve/tmp/offer</argument>
+            <argument name="basePath" xsi:type="string">benleneve/offer</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Benleneve\Offer\Controller\Adminhtml\Offer\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Benleneve\Offer\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+</config>

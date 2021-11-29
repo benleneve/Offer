@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+namespace Benleneve\Offer\Block\Adminhtml\Offer\Edit;
+
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
+
+/**
+ * Class ResetButton
+ */
+class ResetButton implements ButtonProviderInterface
+{
+    /**
+     * Get button data
+     *
+     * @return array
+     */
+    public function getButtonData(): array
+    {
+        return [
+            'label' => __('Reset'),
+            'class' => 'reset',
+            'on_click' => 'location.reload();',
+            'sort_order' => 30
+        ];
+    }
+}

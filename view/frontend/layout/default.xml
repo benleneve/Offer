@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Benleneve_Offer::css/benleneve-offer.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.top">
+            <block class="Benleneve\Offer\Block\Offer" before="breadcrumbs" name="benleneve_offer" as="benleneve_offer" template="offer.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
