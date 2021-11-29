@@ -85,9 +85,9 @@ class Save extends Action
                 $offer->setEntityId($data[Offer::FIELD_ID]);
             }
             $offer->save();
-            $this->messageManager->addSuccessMessage(__('Row data has been successfully saved.'));
+            $this->messageManager->addSuccessMessage(__('Offer has been successfully saved'));
         } catch (Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __('An error occurred during saving process.'));
+            $this->messageManager->addExceptionMessage($e, __('An error occurred during saving process'));
         }
 
         return $resultRedirect->setPath('*/*/index', array('_current' => true));

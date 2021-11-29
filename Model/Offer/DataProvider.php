@@ -24,7 +24,7 @@ class DataProvider extends AbstractDataProvider
     private $storeManager;
 
     /**
-     * DataProvider constructor
+     * Constructor
      *
      * @param string $name
      * @param string $primaryFieldName
@@ -61,8 +61,6 @@ class DataProvider extends AbstractDataProvider
             if (isset($offerData[Offer::FIELD_FEATURED_IMAGE]) && $offerData[Offer::FIELD_FEATURED_IMAGE] !== '') {
                 $name = $offerData[Offer::FIELD_FEATURED_IMAGE];
                 unset($offerData[Offer::FIELD_FEATURED_IMAGE]);
-
-                // TODO catch Exception
                 $mediaUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
                 $offerData[Offer::FIELD_FEATURED_IMAGE][] = [
                     'name' => $name,

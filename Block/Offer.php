@@ -21,7 +21,7 @@ use Benleneve\Offer\Model\ResourceModel\Offer\Collection as OfferCollection;
 class Offer extends Template
 {
     /**
-     * @var Registry Magento Registry instance
+     * @var Registry
      */
     private $registry;
 

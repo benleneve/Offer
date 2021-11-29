@@ -29,9 +29,9 @@ class Delete extends Action
         if ($offer) {
             try {
                 $offer->delete();
-                $this->messageManager->addSuccessMessage(__('Offer deleted.'));
+                $this->messageManager->addSuccessMessage(__('Offer deleted'));
             } catch (Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('An error occurred during deleting process.'));
+                $this->messageManager->addExceptionMessage($e, __('An error occurred during deleting process'));
             }
         }
         $resultRedirect = $this->resultRedirectFactory->create();

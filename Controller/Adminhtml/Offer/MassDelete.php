@@ -36,12 +36,10 @@ class MassDelete extends Action
                 try {
                     $offer->delete();
                     $deletedOffers++;
-                } catch (Exception $e) {
-                    // TODO add log
-                }
+                } catch (Exception $e) {}
             }
         }
-        $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $deletedOffers));
+        $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted', $deletedOffers));
         $resultRedirect = $this->resultRedirectFactory->create();
 
         return $resultRedirect->setPath('*/*/index', array('_current' => true));

@@ -14,7 +14,7 @@ use Magento\Backend\Block\Widget\Context;
 class GenericButton
 {
     /**
-     * @var Context Magento Widget Context instance
+     * @var Context
      */
     protected $context;
 

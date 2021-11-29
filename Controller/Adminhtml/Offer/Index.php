@@ -8,6 +8,7 @@ namespace Benleneve\Offer\Controller\Adminhtml\Offer;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
@@ -15,8 +16,17 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends Action
 {
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory = false;
 
+    /**
+     * Constructor
+     *
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -26,6 +36,11 @@ class Index extends Action
         $this->resultPageFactory = $resultPageFactory;
     }
 
+    /**
+     * Show offer grid
+     *
+     * @return Page
+     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();

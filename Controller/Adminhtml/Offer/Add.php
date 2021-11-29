@@ -18,19 +18,19 @@ use Benleneve\Offer\Model\ResourceModel\Offer as OfferResourceModel;
 class Add extends Action
 {
     /**
+     * @var PageFactory
+     */
+    private $pageFactory;
+
+    /**
      * @var OfferFactory
      */
-    protected $offerFactory;
+    private $offerFactory;
 
     /**
      * @var OfferResourceModel
      */
     private $offerResourceModel;
-
-    /**
-     * @var PageFactory
-     */
-    protected $pageFactory;
 
     /**
      * Constructor
