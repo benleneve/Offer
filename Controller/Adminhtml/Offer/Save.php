@@ -9,7 +9,9 @@ namespace Benleneve\Offer\Controller\Adminhtml\Offer;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\Controller\Result\Redirect;
+use Magento\PageCache\Model\Cache\Type as PageCacheType;
 use Benleneve\Offer\Model\ImageUploader;
 use Benleneve\Offer\Model\Offer;
 use Benleneve\Offer\Model\OfferFactory;
@@ -19,6 +21,11 @@ use Benleneve\Offer\Model\OfferFactory;
  */
 class Save extends Action
 {
+    /**
+     * @var TypeListInterface
+     */
+    private $cacheTypeList;
+
     /**
      * @var ImageUploader
      */
@@ -33,15 +40,18 @@ class Save extends Action
      * Constructor
      *
      * @param Context $context
+     * @param TypeListInterface $cacheTypeList
      * @param ImageUploader $imageUploader
-     * @param OfferFactory $gridFactory
+     * @param OfferFactory $offerFactory
      */
     public function __construct(
         Context $context,
+        TypeListInterface $cacheTypeList,
         ImageUploader $imageUploader,
         OfferFactory $offerFactory
     ) {
         parent::__construct($context);
+        $this->cacheTypeList = $cacheTypeList;
         $this->imageUploader = $imageUploader;
         $this->offerFactory = $offerFactory;
     }
@@ -85,6 +95,8 @@ class Save extends Action
                 $offer->setEntityId($data[Offer::FIELD_ID]);
             }
             $offer->save();
+            // clean cache to for html regeneration
+            $this->cacheTypeList->cleanType(PageCacheType::TYPE_IDENTIFIER);
             $this->messageManager->addSuccessMessage(__('Offer has been successfully saved'));
         } catch (Exception $e) {
             $this->messageManager->addExceptionMessage($e, __('An error occurred during saving process'));
